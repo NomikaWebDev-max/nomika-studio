@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nomika Studio Templates</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header id="site-header">
+    <h1>Nomika Studio Templates</h1>
+    <p>Simple & useful Excel templates for personal and business use</p>
+    <div class="toggle-buttons hidden" id="toggle-section">
+      <button id="btn-local">Malaysia (RM)</button>
+      <button id="btn-int">International ($)</button>
+    </div>
+  </header>
+
+  <div id="loading" class="loading">Detecting your region...</div>
+
+  <main class="container hidden" id="product-container">
+    <div class="product-card">
+      <img src="https://via.placeholder.com/400x300.png?text=Budget+Planner" alt="Ultimate Monthly Budget Planner">
+      <h2>Ultimate Monthly Budget Planner</h2>
+      <p>Track income, expenses, and savings with ease.</p>
+      <p class="price" data-local="RM25" data-int="$6.99">RM25</p>
+      <div class="buttons">
+        <a href="https://toyyibpay.com/Monthly-Template-Excel" target="_blank" class="btn toyyib buy-local">Buy via ToyyibPay</a>
+        <a href="https://nomikastudio.gumroad.com/l/wjjgc" target="_blank" class="btn gumroad buy-int hidden">Buy via Gumroad</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="https://via.placeholder.com/400x300.png?text=Attendance+Template" alt="Class Attendance Template">
+      <h2>Class Attendance Template</h2>
+      <p>Manage attendance for weekly, monthly, yearly classes.</p>
+      <p class="price" data-local="RM20" data-int="$5.99">RM20</p>
+      <div class="buttons">
+        <a href="https://toyyibpay.com/YOUR-LINK-HERE" target="_blank" class="btn toyyib buy-local">Buy via ToyyibPay</a>
+        <a href="https://gumroad.com/YOUR-LINK-HERE" target="_blank" class="btn gumroad buy-int hidden">Buy via Gumroad</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
