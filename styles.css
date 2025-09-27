@@ -16,6 +16,12 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
+  transition: all 0.3s ease;
+}
+
+header.shrink {
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
 }
 
 header h1 {
@@ -27,21 +33,40 @@ header p {
   margin: 0.5rem 0 1rem;
 }
 
+/* Toggle section */
+.currency-toggle {
+  text-align: center;
+  margin: 1rem 0;
+}
+
 .currency-toggle button {
   margin: 0.25rem;
-  padding: 0.5rem 1rem;
-  border: none;
+  padding: 0.5rem 1.2rem;
+  border: 2px solid #4a4ae8;
   border-radius: 6px;
   background: white;
   color: #4a4ae8;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .currency-toggle button:hover {
   background: #6366f1;
   color: white;
+}
+
+.currency-toggle button.active {
+  background: #4a4ae8;
+  color: white;
+}
+
+/* Loading message */
+.loading {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #4a4ae8;
+  padding: 2rem;
 }
 
 /* Container grid */
@@ -75,8 +100,8 @@ header p {
 /* Product image */
 .product-card img {
   width: 100%;
-  height: 220px;       /* uniform height */
-  object-fit: cover;   /* crops images nicely */
+  height: 220px;
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1rem;
 }
@@ -95,7 +120,6 @@ header p {
 .price {
   font-weight: bold;
   margin-bottom: 0.5rem;
-  display: none; /* JS will toggle visibility */
 }
 
 /* Buttons */
@@ -112,7 +136,7 @@ header p {
   border-radius: 6px;
   color: white;
   font-weight: bold;
-  transition: background 0.2s;
+  transition: background 0.2s ease;
 }
 
 .btn.toyyib {
@@ -129,6 +153,11 @@ header p {
 
 .btn.gumroad:hover {
   background: #4f46e5;
+}
+
+/* Hidden utility */
+.hidden {
+  display: none !important;
 }
 
 /* Animation */
