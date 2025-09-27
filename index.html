@@ -7,26 +7,31 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="header">
+  <header id="site-header" class="header">
     <h1>Nomika Studio Templates</h1>
     <p>Simple & useful Excel templates for personal and business use</p>
-    <div class="currency-toggle">
-      <button id="toggleRM">Malaysia (RM)</button>
-      <button id="toggleUSD">International ($)</button>
-    </div>
   </header>
 
-  <main class="container">
+  <!-- Toggle section -->
+  <section id="toggle-section" class="currency-toggle hidden">
+    <button id="btn-local">Malaysia (RM)</button>
+    <button id="btn-int">International ($)</button>
+  </section>
+
+  <!-- Loading state -->
+  <div id="loading" class="loading">Detecting your region...</div>
+
+  <!-- Product container -->
+  <main id="product-container" class="container hidden">
     <!-- Product 1 -->
     <div class="product-card fade-in">
       <img src="images/budget-planner.png" alt="Ultimate Monthly Budget Planner">
       <h2>Ultimate Monthly Budget Planner</h2>
       <p>Track income, expenses, and savings with ease.</p>
-      <p class="price rm">RM25</p>
-      <p class="price usd">$6.99</p>
+      <p class="price" data-local="RM25" data-int="$6.99">RM25</p>
       <div class="buttons">
-        <a href="https://toyyibpay.com/Monthly-Template-Excel" target="_blank" class="btn toyyib">Buy via ToyyibPay</a>
-        <a href="https://nomikastudio.gumroad.com/l/wjjgc" target="_blank" class="btn gumroad">Buy via Gumroad</a>
+        <a href="https://toyyibpay.com/Monthly-Template-Excel" target="_blank" class="btn toyyib buy-local">Buy via ToyyibPay</a>
+        <a href="https://nomikastudio.gumroad.com/l/wjjgc" target="_blank" class="btn gumroad buy-int hidden">Buy via Gumroad</a>
       </div>
     </div>
 
@@ -35,11 +40,10 @@
       <img src="images/class-attendance.png" alt="Class Attendance Template">
       <h2>Class Attendance Template</h2>
       <p>Manage attendance for weekly, monthly, yearly classes.</p>
-      <p class="price rm">RM20</p>
-      <p class="price usd">$5.99</p>
+      <p class="price" data-local="RM20" data-int="$5.99">RM20</p>
       <div class="buttons">
-        <a href="https://toyyibpay.com/YOUR-LINK-HERE" target="_blank" class="btn toyyib">Buy via ToyyibPay</a>
-        <a href="https://gumroad.com/YOUR-LINK-HERE" target="_blank" class="btn gumroad">Buy via Gumroad</a>
+        <a href="https://toyyibpay.com/YOUR-LINK-HERE" target="_blank" class="btn toyyib buy-local">Buy via ToyyibPay</a>
+        <a href="https://gumroad.com/YOUR-LINK-HERE" target="_blank" class="btn gumroad buy-int hidden">Buy via Gumroad</a>
       </div>
     </div>
   </main>
