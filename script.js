@@ -9,6 +9,7 @@ const prices = document.querySelectorAll('.price');
 const localButtons = document.querySelectorAll('.buy-local');
 const intButtons = document.querySelectorAll('.buy-int');
 
+// Show prices and buttons in local currency
 function showLocal(save = true) {
   prices.forEach(p => p.textContent = p.dataset.local);
   localButtons.forEach(btn => btn.classList.remove('hidden'));
@@ -18,6 +19,7 @@ function showLocal(save = true) {
   if (save) localStorage.setItem("currency", "local");
 }
 
+// Show prices and buttons in international currency
 function showInt(save = true) {
   prices.forEach(p => p.textContent = p.dataset.int);
   localButtons.forEach(btn => btn.classList.add('hidden'));
@@ -27,6 +29,7 @@ function showInt(save = true) {
   if (save) localStorage.setItem("currency", "int");
 }
 
+// Reveal content after loading
 function showContent() {
   loading.classList.add("hidden");
   productContainer.classList.remove("hidden");
@@ -37,16 +40,16 @@ function showContent() {
 btnLocal.addEventListener('click', () => showLocal(true));
 btnInt.addEventListener('click', () => showInt(true));
 
+// Detect saved currency or fetch region
 const savedCurrency = localStorage.getItem("currency");
 if (savedCurrency) {
   showContent();
   if (savedCurrency === "local") showLocal(false);
   else showInt(false);
 } else {
-  // Timeout fallback after 3s
   const timeout = setTimeout(() => {
     showContent();
-    showInt(); // fallback to International
+    showInt();
   }, 3000);
 
   fetch("https://ipapi.co/json/")
@@ -68,4 +71,10 @@ if (savedCurrency) {
 window.addEventListener("scroll", () => {
   if (window.scrollY > 50) header.classList.add("shrink");
   else header.classList.remove("shrink");
+});
+
+// Dynamic fade-in delays for all product cards
+const productCards = document.querySelectorAll('.product-card.fade-in');
+productCards.forEach((card, index) => {
+  card.style.animationDelay = `${index * 0.15}s`;
 });
