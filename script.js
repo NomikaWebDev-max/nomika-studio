@@ -29,7 +29,7 @@ function showInt(save = true) {
   if (save) localStorage.setItem("currency", "int");
 }
 
-// Reveal content after loading
+// Show product content
 function showContent() {
   loading.classList.add("hidden");
   productContainer.classList.remove("hidden");
@@ -40,18 +40,14 @@ function showContent() {
 btnLocal.addEventListener('click', () => showLocal(true));
 btnInt.addEventListener('click', () => showInt(true));
 
-// Detect saved currency or fetch region
+// Detect currency from local storage or IP
 const savedCurrency = localStorage.getItem("currency");
 if (savedCurrency) {
   showContent();
   if (savedCurrency === "local") showLocal(false);
   else showInt(false);
 } else {
-  const timeout = setTimeout(() => {
-    showContent();
-    showInt();
-  }, 3000);
-
+  const timeout = setTimeout(() => { showContent(); showInt(); }, 3000);
   fetch("https://ipapi.co/json/")
     .then(res => res.json())
     .then(data => {
@@ -60,21 +56,11 @@ if (savedCurrency) {
       if (data.country_code === "MY") showLocal();
       else showInt();
     })
-    .catch(() => {
-      clearTimeout(timeout);
-      showContent();
-      showInt();
-    });
+    .catch(() => { clearTimeout(timeout); showContent(); showInt(); });
 }
 
 // Shrink header on scroll
 window.addEventListener("scroll", () => {
   if (window.scrollY > 50) header.classList.add("shrink");
   else header.classList.remove("shrink");
-});
-
-// Dynamic fade-in delays for all product cards
-const productCards = document.querySelectorAll('.product-card.fade-in');
-productCards.forEach((card, index) => {
-  card.style.animationDelay = `${index * 0.15}s`;
 });
