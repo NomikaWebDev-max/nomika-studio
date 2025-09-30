@@ -1,134 +1,288 @@
-body {
-  font-family: Arial, sans-serif;
+/* ===================
+   Global Styles
+=================== */
+* {
   margin: 0;
   padding: 0;
-  background: #f9f9f9;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: #f9fafb;
   color: #333;
 }
 
-header {
-  text-align: center;
-  padding: 2rem 1rem;
-  background: #4a4ae8;
-  color: white;
+/* Reusable Container */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* ===================
+   Header
+=================== */
+.header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
   position: sticky;
   top: 0;
-  z-index: 10;
-  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
-header.shrink {
-  padding: 0.7rem 1rem;
-  font-size: 0.9rem;
-}
-
-header h1 { margin: 0; font-size: 2rem; }
-header p { margin: 0.5rem 0 1rem; }
-
-.currency-toggle { text-align: center; margin: 1rem 0; }
-
-.currency-toggle button {
-  margin: 0.25rem;
-  padding: 0.5rem 1.2rem;
-  border: 2px solid #4a4ae8;
-  border-radius: 6px;
-  background: white;
-  color: #4a4ae8;
+.logo {
+  font-size: 1.5rem;
   font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  color: #2563eb;
 }
 
-.currency-toggle button:hover { background: #6366f1; color: white; }
-.currency-toggle button.active { background: #4a4ae8; color: white; }
+.nav {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
 
-.loading {
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #2563eb;
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ===================
+   Hero Section
+=================== */
+.hero {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #fff;
+  padding: 4rem 2rem;
   text-align: center;
-  font-size: 1.1rem;
-  color: #4a4ae8;
-  padding: 2rem;
 }
 
-/* Container grid with last row centering */
-.container {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+.btn {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1d4ed8;
+}
+
+/* ===================
+   Products
+=================== */
+.products {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.products h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  justify-items: center;   /* Center all items */
-  justify-content: center; /* Center last row */
+  gap: 2rem;
 }
 
 .product-card {
-  width: 280px;
-  background: white;
+  background: #fff;
+  padding: 1.5rem;
   border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  position: relative;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.8s ease-out;
 }
 
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-  background: #f0f0ff;
+.product-card.visible {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .product-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
+  max-width: 100%;
   border-radius: 8px;
   margin-bottom: 1rem;
-  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.product-card img:hover {
-  transform: scale(1.05);
-  filter: brightness(1.1);
+.product-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #2563eb;
 }
 
-.product-card h2 { font-size: 1.2rem; margin: 0.5rem 0; }
-.product-card p { margin: 0.5rem 0 1rem; }
-.price { font-weight: bold; margin-bottom: 0.5rem; }
+.product-card p {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
 
-.buttons {
+.price {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #facc15;
+  color: #333;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+}
+
+/* ===================
+   Testimonials
+=================== */
+.testimonials {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.testimonial-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  font-style: italic;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+.testimonial-card.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.testimonial-card span {
+  display: block;
+  margin-top: 0.8rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+/* ===================
+   Footer
+=================== */
+.footer {
+  background: #111827;
+  color: #f9fafb;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.footer h2 {
+  margin-bottom: 1rem;
+}
+
+.footer .btn {
+  background: #3b82f6;
+  margin-top: 1rem;
+}
+
+.footer p.small {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* ===================
+   Preloader
+=================== */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f9fafb;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  margin-top: auto;
+  z-index: 2000;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-.btn { text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; color: white; font-weight: bold; transition: background 0.2s ease; }
-.btn.toyyib { background: #16a34a; }
-.btn.toyyib:hover { background: #15803d; }
-.btn.gumroad { background: #6366f1; }
-.btn.gumroad:hover { background: #4f46e5; }
-
-.hidden { display: none !important; }
-
-/* Fade-in animation */
-.fade-in { opacity: 0; transform: translateY(15px); animation: fadeInUp 0.6s forwards; }
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-
-@media (max-width: 900px) {
-  .container {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    justify-items: center;
-    justify-content: center;
-  }
-  .product-card { width: 240px; }
+#preloader p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #2563eb;
+  font-weight: 500;
 }
 
-@media (max-width: 600px) {
-  .container { grid-template-columns: 1fr; }
-  .product-card { width: 100%; }
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #e5e7eb;
+  border-top: 5px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ===================
+   Animations
+=================== */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
