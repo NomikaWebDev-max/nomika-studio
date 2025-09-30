@@ -8,6 +8,7 @@ const loading = document.getElementById('loading');
 const prices = document.querySelectorAll('.price');
 const localButtons = document.querySelectorAll('.buy-local');
 const intButtons = document.querySelectorAll('.buy-int');
+const productCards = document.querySelectorAll('.product-card');
 
 // Show prices and buttons in local currency
 function showLocal(save = true) {
@@ -29,11 +30,16 @@ function showInt(save = true) {
   if (save) localStorage.setItem("currency", "int");
 }
 
-// Show product content
+// Show product content with animations
 function showContent() {
   loading.classList.add("hidden");
   productContainer.classList.remove("hidden");
   toggleSection.classList.remove("hidden");
+
+  // Animate product cards with stagger
+  productCards.forEach((card, i) => {
+    card.style.animationDelay = `${i * 0.2}s`;
+  });
 }
 
 // Button click listeners
